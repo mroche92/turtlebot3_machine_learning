@@ -33,7 +33,15 @@ from keras.optimizers import RMSprop
 from keras.layers import Dense, Dropout, Activation
 
 
-EPISODES = 3000
+try:
+    envi = os.environ['envi']
+    from google.colab import drive
+except:
+    envi = "development"
+finally:
+    print("Environment: %s" %(envi))
+
+EPISODES = 700
 
 class ReinforceAgent():
     def __init__(self, state_size, action_size):
@@ -61,6 +69,9 @@ class ReinforceAgent():
         self.target_model = self.buildModel()
 
         self.updateTargetModel()
+
+        if envi=="colab":
+            drive.mount('/content/drive')
 
         if self.load_model:
             self.model.set_weights(load_model(self.dirPath+str(self.load_episode)+".h5").get_weights())
@@ -184,6 +195,10 @@ if __name__ == '__main__':
                 agent.model.save(agent.dirPath + str(e) + '.h5')
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
+                if envi=="colab":
+                    agent.model.save('/content/drive/save_model/stage_1_' + str(e) + '.h5')
+                    with open('/content/drive/save_model/stage_1_ + str(e) + '.json', 'w') as outfile:
+                        json.dump(param_dictionary, outfile)
 
             if t >= 500:
                 rospy.loginfo("Time out!!")
