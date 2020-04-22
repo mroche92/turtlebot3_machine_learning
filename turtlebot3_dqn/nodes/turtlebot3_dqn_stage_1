@@ -35,7 +35,6 @@ from keras.layers import Dense, Dropout, Activation
 
 try:
     envi = os.environ['envi']
-    from google.colab import drive
 except:
     envi = "development"
 finally:
@@ -69,9 +68,6 @@ class ReinforceAgent():
         self.target_model = self.buildModel()
 
         self.updateTargetModel()
-
-        if envi=="colab":
-            drive.mount('/content/drive')
 
         if self.load_model:
             self.model.set_weights(load_model(self.dirPath+str(self.load_episode)+".h5").get_weights())
@@ -196,8 +192,8 @@ if __name__ == '__main__':
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
                 if envi=="colab":
-                    agent.model.save('/content/drive/save_model/stage_1_' + str(e) + '.h5')
-                    with open('/content/drive/save_model/stage_1_ + str(e) + '.json', 'w') as outfile:
+                    agent.model.save('/content/drive/My\ Drive/save_model/stage_1_' + str(e) + '.h5')
+                    with open('/content/drive/My\ Drive//save_model/stage_1_' + str(e) + '.json', 'w') as outfile:
                         json.dump(param_dictionary, outfile)
 
             if t >= 500:
