@@ -192,8 +192,8 @@ if __name__ == '__main__':
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
                 if envi=="colab":
-                    agent.model.save(r('/content/drive/My Drive/save_model/stage_1_' + str(e) + '.h5'))
-                    with open(r('/content/drive/My Drive/save_model/stage_1_' + str(e) + '.json', 'w')) as outfile:
+                    agent.model.save(r"/content/drive/My Drive/save_model/stage_1_" + str(e) + '.h5')
+                    with open(r"/content/drive/My Drive/save_model/stage_1_" + str(e) + '.json', 'w') as outfile:
                         json.dump(param_dictionary, outfile)
 
             if t >= 500:
