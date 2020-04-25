@@ -42,9 +42,9 @@ finally:
     print("Environment: %s" %(envi))
 
 try:
-    envi = os.environ['autoload']
+    autoload = os.environ['autoload']
 except:
-    envi = "False"
+    autoload = "False"
 finally:
     print("autoload: %s" %(envi))
 
