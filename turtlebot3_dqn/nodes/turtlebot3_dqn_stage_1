@@ -59,6 +59,7 @@ class ReinforceAgent():
         if autoload=='True':
             self.load_model = True
             self.load_episode = 670
+        if envi == 'colab':
             self.dirPath = r"/content/drive/My Drive/save_model/stage_1_"
             
         self.result = Float32MultiArray()
@@ -204,10 +205,6 @@ if __name__ == '__main__':
                 agent.model.save(agent.dirPath + str(e) + '.h5')
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
-                if envi=="colab":
-                    agent.model.save(agent.dirPath + str(e) + '.h5')
-                    with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
-                        json.dump(param_dictionary, outfile)
 
             if t >= 250:
                 rospy.loginfo("Time out!!")
