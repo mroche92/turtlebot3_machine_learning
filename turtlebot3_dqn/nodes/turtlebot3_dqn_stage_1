@@ -92,11 +92,14 @@ class ReinforceAgent():
         self.updateTargetModel()
 
         if self.load_model:
-            self.model.set_weights(load_model(self.dirPath+str(self.load_episode)+".h5").get_weights())
-
+            #print(self.dirPath+str(self.load_episode)+".h5")
             with open(self.dirPath+str(self.load_episode)+'.json') as outfile:
                 param = json.load(outfile)
                 self.epsilon = param.get('epsilon')
+            print(self.dirPath+str(self.load_episode)+".h5")
+            self.model.set_weights(load_model(self.dirPath+str(self.load_episode)+".h5").get_weights())
+
+            
 
     def buildModel(self):
         model = Sequential()
