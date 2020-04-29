@@ -116,7 +116,7 @@ class ReinforceAgent():
         model.compile(loss='mse', optimizer=RMSprop(lr=self.learning_rate, rho=0.9, epsilon=1e-06))
         model.summary()
 
-        plot_model(model, to_file=r"/content/drive/My Drive/save_model/stage_1_"+'model_plot.png', show_shapes=True, show_layer_names=True)
+        plot_model(model, to_file=self.dirPath+'model_plot.png', show_shapes=True, show_layer_names=True)
         return model
 
     def getQvalue(self, reward, next_target, done):
@@ -219,7 +219,7 @@ if __name__ == '__main__':
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
 
-            if t >= 50:
+            if t >= 125:
                 rospy.loginfo("Time out!!")
                 done = True
 
