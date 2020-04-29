@@ -217,7 +217,7 @@ if __name__ == '__main__':
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
 
-            if t >= 250:
+            if t >= 50:
                 rospy.loginfo("Time out!!")
                 done = True
 
