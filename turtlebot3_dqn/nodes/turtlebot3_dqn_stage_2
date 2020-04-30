@@ -180,7 +180,7 @@ if __name__ == '__main__':
             get_action.data = [action, score, reward]
             pub_get_action.publish(get_action)
 
-            if t > 500:
+            if t > 350:
                 rospy.loginfo("Time out.")
                 done = True
 
