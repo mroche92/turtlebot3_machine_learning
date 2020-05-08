@@ -60,7 +60,7 @@ class ReinforceAgent():
         self.dirPath = os.path.dirname(os.path.realpath(__file__))
         self.dirPath = self.dirPath.replace('turtlebot3_dqn/nodes', 'turtlebot3_dqn/save_model/stage_2_')
         if envi == 'colab':
-            self.dirPath = r"/content/drive/My Drive/save_model/stage_2_"
+            self.dirPath = r"/content/drive/My Drive/save_model/stage_2_" #directorio de guardado de drive
         if autoload=='True':
             lista = glob.glob(self.dirPath+"*.json")
             arr = []
@@ -82,8 +82,8 @@ class ReinforceAgent():
         self.discount_factor = 0.99
         self.learning_rate = 0.00025
         self.epsilon = 1.0
-        self.epsilon_decay = 0.99 #este es el decaimiento que se debe modificar(subirlo a 0.995)
-        self.epsilon_min = 0.05 #hay que subir este valor para que haya mas  aleatoreidad en episodios superiores
+        self.epsilon_decay = 0.995 #este es el decaimiento que se debe modificar(subirlo a 0.995) ya se hizo el cambio
+        self.epsilon_min = 0.10 #hay que subir este valor para que haya mas  aleatoreidad en episodios superiores / ya se hizo cambio
         self.batch_size = 64
         self.train_start = 64
         self.memory = deque(maxlen=1000000)
