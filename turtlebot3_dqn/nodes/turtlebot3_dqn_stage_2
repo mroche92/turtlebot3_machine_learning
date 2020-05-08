@@ -82,8 +82,8 @@ class ReinforceAgent():
         self.discount_factor = 0.99
         self.learning_rate = 0.00025
         self.epsilon = 1.0
-        self.epsilon_decay = 0.99
-        self.epsilon_min = 0.05
+        self.epsilon_decay = 0.99 #este es el decaimiento que se debe modificar(subirlo a 0.995)
+        self.epsilon_min = 0.05 #hay que subir este valor para que haya mas  aleatoreidad en episodios superiores
         self.batch_size = 64
         self.train_start = 64
         self.memory = deque(maxlen=1000000)
@@ -179,8 +179,8 @@ if __name__ == '__main__':
     result = Float32MultiArray()
     get_action = Float32MultiArray()
 
-    state_size = 28
-    action_size = 5
+    state_size = 28 #24 entradas del radar, distancia a la meta, angulo a la meta, distancia al obstaculo mas cercano, angulo al obstaculo mas cercano
+    action_size = 5 #5 angulos de salida
 
     env = Env(action_size)
 
