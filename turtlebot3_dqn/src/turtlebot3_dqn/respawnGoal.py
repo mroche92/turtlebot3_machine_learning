@@ -106,11 +106,12 @@ class Respawn():
                 self.goal_position.position.y = goal_y
 
         else:
-            while position_check:
-                goal_x_list = [0.6, 1.9, 0.5, 0.2, -0.8, -1, -1.9, 0.5, 2, 0.5, 0, -0.1, -2]
-                goal_y_list = [0, -0.5, -1.9, 1.5, -0.9, 1, 1.1, -1.5, 1.5, 1.8, -1, 1.6, -0.8]
+            while position_check: 
+                #estas goals son para un mapa de por lo menos 10x10 no usar con mapas mas pequenios
+                goal_x_list = [0.60, -4.98, -0.70, 4.08, -4.90, -1.90, 2.36, -0.67, 4.18]
+                goal_y_list = [0.00, -0.51, 1.98, -4.05, 0.68, -2.28, 1.76, -1.46, -4.70]
 
-                self.index = random.randrange(0, 13)
+                self.index = random.randrange(0, len(goal_x_list)) 
                 print(self.index, self.last_index)
                 if self.last_index == self.index:
                     position_check = True

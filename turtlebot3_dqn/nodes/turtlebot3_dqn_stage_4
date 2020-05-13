@@ -81,8 +81,8 @@ class ReinforceAgent():
         self.discount_factor = 0.99
         self.learning_rate = 0.00025
         self.epsilon = 1.0
-        self.epsilon_decay = 0.99
-        self.epsilon_min = 0.05
+        self.epsilon_decay = 0.995
+        self.epsilon_min = 0.10
         self.batch_size = 64
         self.train_start = 64
         self.memory = deque(maxlen=1000000)
@@ -215,7 +215,7 @@ if __name__ == '__main__':
                 with open(agent.dirPath + str(e) + '.json', 'w') as outfile:
                     json.dump(param_dictionary, outfile)
 
-            if t >= 500:
+            if t >= 350:
                 rospy.loginfo("Time out!!")
                 done = True
 
