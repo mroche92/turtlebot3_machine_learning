@@ -48,7 +48,7 @@ except:
 finally:
     print("autoload: %s" %(envi))
 
-EPISODES = 3000
+EPISODES = 10000
 
 
 class ReinforceAgent():
