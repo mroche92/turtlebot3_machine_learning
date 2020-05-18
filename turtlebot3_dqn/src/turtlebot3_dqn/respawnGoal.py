@@ -21,6 +21,7 @@ import rospy
 import random
 import time
 import os
+import numpy as np
 from gazebo_msgs.srv import SpawnModel, DeleteModel
 from gazebo_msgs.msg import ModelStates
 from geometry_msgs.msg import Pose
@@ -106,12 +107,14 @@ class Respawn():
                 self.goal_position.position.y = goal_y
 
         else:
+            goal_x_list, goal_y_list = np.loadtxt('goals.txt', unpack=True) # asegurarse de haber generado un mapa adecuado para que las goals
+                                                                            #no choquen con un obstaculo
             while position_check: 
                 #estas goals son para un mapa de por lo menos 10x10 no usar con mapas mas pequenios
-                goal_x_list = [0.60, -4.98, -0.70, 4.08, -4.90, -1.90, 2.36, -0.67, 4.18]
-                goal_y_list = [0.00, -0.51, 1.98, -4.05, 0.68, -2.28, 1.76, -1.46, -4.70]
+                #goal_x_list = [0.60, -4.98, -0.70, 4.08, -4.90, -1.90, 2.36, -0.67, 4.18]
+                #goal_y_list = [0.00, -0.51, 1.98, -4.05, 0.68, -2.28, 1.76, -1.46, -4.70]
 
-                self.index = random.randrange(0, len(goal_x_list)) 
+                self.index = random.randrange(0, len(goal_x_list))
                 print(self.index, self.last_index)
                 if self.last_index == self.index:
                     position_check = True
