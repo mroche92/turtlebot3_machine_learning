@@ -25,6 +25,7 @@ import numpy as np
 from gazebo_msgs.srv import SpawnModel, DeleteModel
 from gazebo_msgs.msg import ModelStates
 from geometry_msgs.msg import Pose
+from os.path import expanduser
 
 class Respawn():
     def __init__(self):
@@ -107,7 +108,8 @@ class Respawn():
                 self.goal_position.position.y = goal_y
 
         else:
-            goal_x_list, goal_y_list = np.loadtxt('goals.txt', unpack=True) # asegurarse de haber generado un mapa adecuado para que las goals
+            goal_path = expanduser("~/catkin_ws/src/turtlebot3_machine_learning/turtlebot3_dqn/src/turtlebot3_dqn/goals.txt")
+            goal_x_list, goal_y_list = np.loadtxt(goal_path, unpack=True) # asegurarse de haber generado un mapa adecuado para que las goals
                                                                             #no choquen con un obstaculo
             while position_check: 
                 #estas goals son para un mapa de por lo menos 10x10 no usar con mapas mas pequenios
